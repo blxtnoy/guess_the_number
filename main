@@ -1,0 +1,39 @@
+import random
+import os
+
+# Очистка консоли
+def clear_console():
+    os.system('cls')
+
+def play_game():
+    # Генерируем случайное число от 1 до 100
+    clear_console()
+    secret_number = random.randint(1, 100)
+
+    print("Добро пожаловать в игру 'Угадай число'!")
+
+    # Создаем мощные переменные
+    guess = 0
+    attempts = 0
+
+    while guess != secret_number:
+        # Запускаем игру
+        guess = int(input("Угадайте число от 1 до 100: "))
+        attempts += 1
+
+        # Проверяем вариант пользователя
+        if guess < secret_number:
+            print("Загаданное число больше вашего варианта.")
+        elif guess > secret_number:
+            print("Загаданное число меньше вашего варианта.")
+        else:
+            print(f"Поздравляю! Вы угадали число {secret_number}!")
+            print(f"Вам потребовалось {attempts} попыток.")
+
+            play_again = input("Хотите сыграть ещё раз? (Да/Нет): ")
+            if play_again.lower() == "да":
+                play_game()
+            else:
+                print("Спасибо за игру. \nДо свидания!")
+
+play_game()
